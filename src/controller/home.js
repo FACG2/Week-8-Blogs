@@ -1,5 +1,5 @@
 function get (req, res) {
-  res.send('hi');
+  res.render('home');
 }
 
 module.exports = {
