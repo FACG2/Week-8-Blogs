@@ -1,5 +1,13 @@
+const {getAllBlogs} = require('../model/index');
+
 function get (req, res) {
-  res.send('hi');
+  getAllBlogs((err, blogs) => {
+    if (err) {
+      res.render('404');
+    } else {
+      res.render('home', {blogs});
+    }
+  });
 }
 
 module.exports = {
