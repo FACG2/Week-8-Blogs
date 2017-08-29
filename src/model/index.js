@@ -1,4 +1,5 @@
-const blogQuery = require('../Database/queries.js');
+const blogQuery = require('./queries');
+
 module.exports = {
-  blogAllBlogs: blogQuery.getAll
+  getAllBlogs: blogQuery.getAll
 };
