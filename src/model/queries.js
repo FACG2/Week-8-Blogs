@@ -1,7 +1,7 @@
 const dbConnec = require('./Database/db_connection.js');
 
 function getAll (cb) {
-  dbConnec.query('SELECT * FROM blogs ORDER BY blog_date DESC;', (err, res) => {
+  return dbConnec.query('SELECT * FROM blogs ORDER BY blog_date DESC;', (err, res) => {
     if (err) {
       cb(err);
     } else {
