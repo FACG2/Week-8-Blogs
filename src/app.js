@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const controller = require('./controller/index');
 const helmet = require('helmet');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -10,6 +11,8 @@ app.use(express.static('public'));
 
 app.use(helmet());
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.engine(

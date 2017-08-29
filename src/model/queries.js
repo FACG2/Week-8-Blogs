@@ -10,6 +10,18 @@ function getAll (cb) {
   });
 }
 
+function getBlogById (id, cb) {
+  dbConnec.query(
+    {
+      text: 'SELECT * FROM blogs WHERE id =$1',
+      values: [id]
+    }, (err, blog) => {
+    if (err) cb(err);
+    else cb(null, blog.rows);
+  });
+}
+
 module.exports = {
-  getAll
+  getAll,
+  getBlogById
 };
