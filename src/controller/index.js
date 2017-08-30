@@ -9,7 +9,11 @@ const addBlog = require('./addBlog');
 const router = express.Router();
 
 router.get('/', home.get);
-router.get('/blogs/add', addBlog.post);
+router.get('/blogs/add', addBlog.get);
+router.post('/blogs/add', addBlog.post);
+router.get('/blogs/:id/edit', blog.getEditBlog);
+router.post('/blogs/:id', blog.post);
+router.get('/blogs/:id/delete', blog.deleteBlogById);
 router.get('/blogs/:id', blog.get);
 router.get('/login', login.get);
 router.post('/login', login.post);
