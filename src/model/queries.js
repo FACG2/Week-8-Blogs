@@ -22,7 +22,10 @@ function getBlogById (id, cb) {
 }
 
 function getAdmins (name, password, cb) {
-  dbConnec.query(`SELECT * FROM admin WHERE name=${name} AND password=${password}`, (err, res) => {
+  dbConnec.query({
+    text: `SELECT * FROM admin WHERE name=$1 AND password=$2`,
+    values: [name, password]
+  }, (err, res) => {
     if (err) {
       return cb(err);
     }
@@ -31,13 +34,19 @@ function getAdmins (name, password, cb) {
 }
 
 function addBlog (req, cb) {
-  dbConnec.query(`SELECT * FROM admins WHERE name=${req.body.name}`, (err, admin) => {
+  dbConnec.query({
+    text: `SELECT * FROM admins WHERE name=$1`,
+    values: [req.body.name]
+  }, (err, admin) => {
     if (err) {
       cb(err);
     } else {
       const query = `INSERT INTO blogs(title, contents, img_url , admin_id)
-      VALUES (${req.body.title}','${req.body.contents}',${req.body.img_url} , ${admin.rows[0].id});`;
-      dbConnec.query(query, (err1, response) => {
+      VALUES ($1,$2,$3,$4);`;
+      dbConnec.query({
+        text: query,
+        values: [req.body.title, req.body.contents, req.body.img_url, admin.rows[0].id]
+      }, (err1, response) => {
         if (err1) {
           return cb(err1);
         }
@@ -48,7 +57,10 @@ function addBlog (req, cb) {
 }
 
 function deleteBlog (req, cb) {
-  dbConnec.query(`DELETE FROM blogs WHERE blog_id = ${req.body.id}`, (err, resp) => {
+  dbConnec.query({
+    text: `DELETE FROM blogs WHERE blog_id = $1`,
+    values: [req.body.id]
+  }, (err, resp) => {
     if (err) {
       return cb(err);
     }
@@ -57,7 +69,10 @@ function deleteBlog (req, cb) {
 }
 
 function updateBlog (req, cb) {
-  dbConnec.query(`UPDATE blogs SET title =${req.body.title} AND contents =${req.body.contents} AND img_url =${req.body.img_url} WHERE id = ${req.body.id} `, (err, dbRes) => {
+  dbConnec.query({
+    text: `UPDATE blogs SET title =$1 AND contents =$2 AND img_url =$3 WHERE id = $4 `,
+    values: [req.body.title, req.body.contents, req.body.img_url, req.body.id]
+  }, (err, dbRes) => {
     if (err) {
       return cb(err);
     }
@@ -66,7 +81,10 @@ function updateBlog (req, cb) {
 }
 
 function validateAdmin (req, callback) {
-  dbConnec.query(`SELECT name ,password FROM admins WHERE name =${req.body.name} AND password =${req.body.password}`, (err, res) => {
+  dbConnec.query({
+    text: `SELECT name ,password FROM admins WHERE name =$1 AND password =$2`,
+    values: [req.body.name, req.body.password]
+  }, (err, res) => {
     if (err) {
       return callback(err);
     }
