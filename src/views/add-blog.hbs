@@ -1,10 +1,11 @@
-{{> header}}
+<!-- {{> header}} -->
 
 <main>
   <form class="form" action="/blogs/add" method="POST">
     <input type="text" name="title" value="" placeholder="title ...." required>
     <input id="content" type="text" name="contents" value="" placeholder="content ...." required>
-    <input id="content" type="text" name="name" value="" placeholder="admin name ...." required>
+    <input type="text" name="name" value="" placeholder="admin name ...." required>
+    <input type="text" name="image" value="" placeholder="image url ...." required>
     <button type="submit" name="button">+ add</button>
   </form>
 </main>

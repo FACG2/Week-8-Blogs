@@ -1,0 +1,14 @@
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' />
+
+<main>
+  <form class="form" action="/blogs/{{blog.id}}" method="POST">
+    <input type="text" name="title" placeholder="title ...." value="{{blog.title}}" required>
+    <input id="content" type="text" name="contents" placeholder="content ...." value="{{blog.contents}}" required>
+    <input type="text" name="image" placeholder="image url ...." value='{{blog.img_url}}' required>
+    <button type="submit" name="button"><i class='fa fa-edit'></i> Edit</button>
+  </form>
+</main>
+
+
+
+{{>footer}}

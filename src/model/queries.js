@@ -42,10 +42,10 @@ function addBlog (req, cb) {
       cb(err);
     } else {
       const query = `INSERT INTO blogs(title, contents, img_url , admin_id)
-      VALUES ($1,$2,$3,$4);`;
+      VALUES ($1,$2,$3,$4) RETURNING *;`;
       dbConnec.query({
         text: query,
-        values: [req.body.title, req.body.contents, req.body.img_url, admin.rows[0].id]
+        values: [req.body.title, req.body.contents, req.body.image, admin.rows[0].id]
       }, (err1, response) => {
         if (err1) {
           return cb(err1);
@@ -58,8 +58,8 @@ function addBlog (req, cb) {
 
 function deleteBlog (req, cb) {
   dbConnec.query({
-    text: `DELETE FROM blogs WHERE blog_id = $1`,
-    values: [req.body.id]
+    text: `DELETE FROM blogs WHERE id = $1`,
+    values: [req.params.id]
   }, (err, resp) => {
     if (err) {
       return cb(err);
@@ -70,8 +70,8 @@ function deleteBlog (req, cb) {
 
 function updateBlog (req, cb) {
   dbConnec.query({
-    text: `UPDATE blogs SET title =$1 AND contents =$2 AND img_url =$3 WHERE id = $4 `,
-    values: [req.body.title, req.body.contents, req.body.img_url, req.body.id]
+    text: `UPDATE blogs SET title =$1 , contents =$2 , img_url =$3 WHERE id = $4 RETURNING *`,
+    values: [req.body.title, req.body.contents, req.body.image, req.params.id]
   }, (err, dbRes) => {
     if (err) {
       return cb(err);
