@@ -9,7 +9,7 @@ function post (req, res) {
     if (err) {
       res.redirect('/404');
     } else {
-      res.redirect('/');
+      res.redirect('/admin');
     }
   });
 }
