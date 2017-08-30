@@ -31,19 +31,19 @@ function getAdmins (name, password, cb) {
 }
 
 function addBlog (req, cb) {
-  dbConnec.query('SELECT id FROM admins', (err, response) => {
+  dbConnec.query(`SELECT * FROM admins WHERE name=${req.body.name}`, (err, admin) => {
     if (err) {
-      return cb(err);
+      cb(err);
+    } else {
+      const query = `INSERT INTO blogs(title, contents, img_url , admin_id)
+      VALUES (${req.body.title}','${req.body.contents}',${req.body.img_url} , ${admin.rows[0].id});`;
+      dbConnec.query(query, (err1, response) => {
+        if (err1) {
+          return cb(err1);
+        }
+        cb(null, response.rows);
+      });
     }
-    const id = response.rows[0].id;
-    const query = `INSERT INTO blogs(title, contents, img_url , admin_id)
-      VALUES (${req.body.title}','${req.body.contents}',${req.body.img_url} , ${id})`;
-    dbConnec.query(query, (err, response) => {
-      if (err) {
-        return cb(err);
-      }
-      cb(null, response);
-    });
   });
 }
 
