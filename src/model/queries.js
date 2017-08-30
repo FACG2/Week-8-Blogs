@@ -22,7 +22,7 @@ function getBlogById (id, cb) {
 }
 
 function getAdmins (name, password, cb) {
-  dbConnec.query('SELECT * FROM admins', (err, res) => {
+  dbConnec.query(`SELECT * FROM admin WHERE name=${name} AND password=${password}`, (err, res) => {
     if (err) {
       return cb(err);
     }
@@ -65,12 +65,12 @@ function updateBlog (req, cb) {
   });
 }
 
-function validateAdmin (req, cb) {
+function validateAdmin (req, callback) {
   dbConnec.query(`SELECT name ,password FROM admins WHERE name =${req.body.name} AND password =${req.body.password}`, (err, res) => {
     if (err) {
-      return cb(err);
+      return callback(err);
     }
-    cb(null, res.rows);
+    callback(null, res.rows);
   });
 }
 
