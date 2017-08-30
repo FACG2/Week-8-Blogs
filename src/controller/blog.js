@@ -7,7 +7,7 @@ function get (req, res) {
       console.log(err);
       res.render('404');
     } else {
-      res.render('blog', {blog: blog[0]});
+      res.render('blog', {blog: blog[0], title: blog[0].title, cssPath: '/css/index.css'});
     }
   });
 }
