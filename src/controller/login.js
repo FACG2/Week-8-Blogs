@@ -5,7 +5,7 @@ function get (req, res) {
     if (err) {
       res.render('404');
     } else {
-      res.render('home', {blogs, title: 'Blogs', cssPath: '/css/home.css'});
+      res.render('login', {blogs, title: 'login', cssPath: '/css/login.css'});
     }
   });
 }

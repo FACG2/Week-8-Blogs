@@ -1,9 +1,23 @@
-<h1>Hi</h1>
-
-<ul>
+<section>
+  <h1>Publish your passions, your way</h1>
+  <p>
+    Create a unique and beautiful blog. It’s easy and free.
+  </p>
+</section>
 
 {{#each blogs}}
-  <li>{{this.contents}}</li>
+  <div class="card_viwe">
+    <div id="card">
+      <div id="img">
+        <img src="{{this.img_url}}" />
+      </div>
+      <div id="content">
+        <h2 id="title"><a href="/blogs/{{this.id}}">{{this.title}}</a></h2>
+        <p id="post_content">
+          {{this.contents}}
+        </p>
+        <h6></h6>
+      </div>
+    </div>
+  </div>
 {{/each}}
-
-</ul>
