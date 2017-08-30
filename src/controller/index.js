@@ -8,5 +8,6 @@ const router = express.Router();
 router.get('/', home.get);
 router.get('/blogs/:id', blog.get);
 router.get('/login', login.get);
+router.post('/login', login.post);
 
 module.exports = router;
