@@ -6,7 +6,7 @@ function get (req, res) {
     if (err) {
       res.render('404');
     } else {
-      res.render('login', {admins.rows, title: 'login', cssPath: '/css/login.css'});
+      res.render('login', {admins: admins.rows, title: 'login', cssPath: '/css/login.css'});
     }
   });
 }
