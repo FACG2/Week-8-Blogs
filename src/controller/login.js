@@ -20,6 +20,10 @@ function post (req, res) {
   });
 }
 
+function post (req, res) {
+  res.redirect('/admin');
+}
+
 module.exports = {
   get,
   post
