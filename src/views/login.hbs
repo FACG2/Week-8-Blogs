@@ -1,14 +1,15 @@
 {{> not-admin-header}}
 
 <main>
-  <form class="form" action="/login" method="POST">
-    <input id="username" type="text" name="username" value="" placeholder="name ....">
-    <span id='validName'></span>
-    <input id="password" type="password" name="password" value="" placeholder="Password ....">
-    <span id='validPass'></span>
-    <button type="submit">login</button>
-  </form>
-</section>
+  <section>
+    <form class="form" action="/login" method="POST">
+      <input id="username" type="text" name="username" value="" placeholder="name ....">
+      <span id='validName'></span>
+      <input id="password" type="password" name="password" value="" placeholder="Password ....">
+      <span id='validPass'></span>
+      <button type="submit">login</button>
+    </form>
+  </section>
 </main>
 <script src='/js/login.js'></script>
 
