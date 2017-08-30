@@ -6,5 +6,6 @@ module.exports = {
   getAdmins: blogQuery.getAdmins,
   postAddBlog: blogQuery.addBlog,
   postDeleteBlog: blogQuery.deleteBlog,
-  postUpdateBlog: blogQuery.updateBlog
+  postUpdateBlog: blogQuery.updateBlog,
+  validateAdmin: blogQuery.validateAdmin
 };

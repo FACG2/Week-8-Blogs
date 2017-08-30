@@ -16,4 +16,5 @@ router.get('/admin', admin.get);
 router.get('/logout', login.logout);
 router.get('*', notFound.get);
 
+
 module.exports = router;

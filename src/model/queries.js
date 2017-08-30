@@ -65,11 +65,21 @@ function updateBlog (req, cb) {
   });
 }
 
+function validateAdmin (req, cb) {
+  dbConnec.query(`SELECT name ,password FROM admins WHERE name =${req.body.name} AND password =${req.body.password}`, (err, res) => {
+    if (err) {
+      return cb(err);
+    }
+    cb(null, res.rows);
+  });
+}
+
 module.exports = {
   getAll,
   getBlogById,
   getAdmins,
   addBlog,
   deleteBlog,
-  updateBlog
+  updateBlog,
+  validateAdmin
 };
