@@ -5,7 +5,11 @@ function get (req, res) {
 }
 
 function post (req, res) {
-  queries.addBlog(req, (err, result) => {
+  const data = {
+    body: req.body
+  };
+
+  queries.addBlog(data, (err, result) => {
     if (err) {
       res.redirect('/404');
     } else {
