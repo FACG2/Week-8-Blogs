@@ -1,15 +1,28 @@
-const {getAllBlogs} = require('../model/index');
+const {validateAdmin} = require('../model/index');
 
 function get (req, res) {
-  getAllBlogs((err, blogs) => {
+  res.render('login', {title: 'Admin Page', cssPath: '/css/login.css'});
+}
+
+function post (req, res) {
+  const data = {
+    body: req.body
+  };
+  validateAdmin(data, (err, admin) => {
     if (err) {
       res.render('404');
     } else {
-      res.render('login', {blogs, title: 'login', cssPath: '/css/login.css'});
+      res.redirect('/admin');
     }
   });
 }
 
+function logout (req, res) {
+  res.redirect('/');
+}
+
 module.exports = {
-  get
+  get,
+  post,
+  logout
 };

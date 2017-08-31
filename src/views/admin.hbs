@@ -1,4 +1,4 @@
-{{> not-admin-header}}
+{{>header}}
 
 <main>
 
@@ -18,7 +18,7 @@
         <div id="content">
           <h2 id="title"><a href="/blogs/{{this.id}}">{{this.title}}</a></h2>
           <p id="post_content">
-            {{getFirstFewLetters this.contents}}
+            {{ getFirstFewLetters this.contents}}
           </p>
           <h6></h6>
         </div>
@@ -26,3 +26,6 @@
     </div>
   {{/each}}
 </main>
+
+
+{{>footer}}

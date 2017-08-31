@@ -1,7 +1,16 @@
-<section>
+{{> not-admin-header}}
+
+<main>
+  <section>
     <form class="form" action="/login" method="POST">
-      <input type="text" name="name" value="" placeholder="name ...." required>
-      <input type="password" name="password" value="" placeholder="Password ...." required>
+      <input id="username" type="text" name="username" value="" placeholder="name ....">
+      <span id='validName'></span>
+      <input id="password" type="password" name="password" value="" placeholder="Password ....">
+      <span id='validPass'></span>
       <button type="submit">login</button>
     </form>
   </section>
+</main>
+<script src='/js/login.js'></script>
+
+{{>footer}}

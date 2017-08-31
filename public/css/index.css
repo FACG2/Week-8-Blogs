@@ -89,3 +89,26 @@ img{
   justify-content: center;
   flex-direction: column;
 }
+
+.buttons{
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.btn{
+  /*background-color: #ee6e73;*/
+  color: #FFF;
+  text-decoration: none;
+  max-width: 100px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.delete-btn{
+  background-color: red;
+}
+
+.edit-btn{
+  background-color: #4267B2;
+}
