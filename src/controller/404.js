@@ -1,5 +1,5 @@
-function get (req, res) {
-  res.render('404', {title: 'Page Not Found', cssPath: '/css/404.css'});
+function get (req, res, next) {
+  next({err: 'Error'});
 }
 
 module.exports = {
