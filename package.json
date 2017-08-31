@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node test/*.js | tap-spec",
+    "test:backend": "node test/back-end-test.js | tap-spec",
+    "test:db": "node test/db-test.js | tap-spec",
     "start": "node src/index.js",
     "start:watch": "nodemon src/index.js",
     "lint": "semistandard"
