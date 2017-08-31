@@ -1,9 +1,9 @@
 const {getAllBlogs} = require('../model/index');
 
-function get (req, res) {
+function get (req, res, next) {
   getAllBlogs((err, blogs) => {
     if (err) {
-      res.render('404');
+      next(err);
     } else {
       res.render('admin', {blogs, title: 'Admin Page', cssPath: '/css/home.css'});
     }

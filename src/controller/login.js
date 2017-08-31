@@ -4,13 +4,13 @@ function get (req, res) {
   res.render('login', {title: 'Admin Page', cssPath: '/css/login.css'});
 }
 
-function post (req, res) {
+function post (req, res, next) {
   const data = {
     body: req.body
   };
   validateAdmin(data, (err, admin) => {
     if (err) {
-      res.render('404');
+      next(err);
     } else {
       res.redirect('/admin');
     }
